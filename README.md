@@ -9,7 +9,8 @@ CARA PENGGUNAAN
 -   php artisan serve (menjalankan pada http://127.0.0.1:8000/)
 
 APABILA ADA KENDALA MENGENAI INSTALASI, DAPAT MENGHUBUNGI
-WHATSAPP : +6282249025414
+WHATSAPP : +6282249025414 <a href="https://wa.me/+6282249025414/?text=Hello%20there!" target="_blank"
+                                        style="color: white">Hubungi</a>
 
 TERIMA KASIH
 
