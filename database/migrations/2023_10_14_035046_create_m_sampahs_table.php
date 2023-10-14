@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('deskripsi_sampah');
             $table->string('foto_sampah');
             $table->string('harga_sampah');
+            $table->string('status_sampah');
         });
     }
 

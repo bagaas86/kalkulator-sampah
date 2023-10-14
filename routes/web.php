@@ -30,12 +30,14 @@ Route::post('/', [App\Http\Controllers\c_login::class, 'logout'])->name('user.lo
 Route::get('profil/chartsampah', [App\Http\Controllers\c_login::class, 'chartSampah'])->name('profil.chartsampah');
 Route::get('hari', [App\Http\Controllers\c_login::class, 'hari'] )->name('hari');
 
-// Barang
+// Sampah
 Route::controller(c_sampah::class)->group(function () {
     Route::get('sampah', 'index')->name('sampah.index');
     Route::get('sampah/create', 'create')->name('sampah.create');
     Route::post('sampah/store', 'store')->name('sampah.store');
     Route::get('sampah/detail/{id}', 'detail')->name('sampah.detail');
+
+    Route::get('ubahstatussampah/{id_sampah}', 'ubahStatus_Sampah')->name('ubahstatussampah');
 });
 
 // Kalkulator

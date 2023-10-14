@@ -36,4 +36,9 @@ class m_sampah extends Model
     {
         DB::table('sampah')->insert($data);
     }
+
+    public function editData($id_sampah, $data)
+    {
+        DB::table('sampah')->where('id_sampah', $id_sampah)->update($data);
+    }
 }

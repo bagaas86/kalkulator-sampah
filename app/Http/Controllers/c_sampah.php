@@ -64,11 +64,25 @@ class c_sampah extends Controller
         'nama_sampah'=> $request->nama_sampah,
         'harga_sampah' => $request->harga_sampah,
         'deskripsi_sampah'=> $request->deskripsi_sampah,
-        'foto_sampah'=> $filename
+        'foto_sampah'=> $filename,
+        'status_sampah' => "Aktif",
     ];
 
     $this->sampah->addData($data);
     return redirect()->route('sampah.index')->with('success','Sampah berhasil ditambahkan');
 
+    }
+
+    public function ubahStatus_Sampah(Request $request, $id_sampah)
+    {
+        $status = $request->status;
+        $data = [
+            'status_sampah'=> $status
+        ];
+      
+        $this->sampah->editData($id_sampah, $data);
+         return redirect()->route('sampah.index')->with('success', 'Sampah Berhasil diupdate.');
+
+      
     }
 }

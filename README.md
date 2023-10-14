@@ -7,6 +7,14 @@ CARA PENGGUNAAN
 -   php artisan migrate:fresh (untuk mengirim database yang sudah dibuat menggunakan migrasi)
 -   php artisan db:seed (mengirim data akun ke database)
 -   php artisan serve (menjalankan pada http://127.0.0.1:8000/)
+-   Akun
+    Admin =
+    username : admin
+    password : password
+
+    User/Client
+    username : bagas
+    password : password
 
 APABILA ADA KENDALA MENGENAI INSTALASI, DAPAT MENGHUBUNGI
 WHATSAPP : +6282249025414 <a href="https://wa.me/+6282249025414/?text=Hello%20there!" target="_blank"

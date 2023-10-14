@@ -76,6 +76,7 @@ class c_login extends Controller
             if(Auth::user()->level == "Admin"){
             $data = [
                 'admin' => "Hallo Admin",
+                'jumlah_sampah' => DB::table('sampah')->count(),
                 ];
                 return view('admin.v_dashboard', $data);
             }else{

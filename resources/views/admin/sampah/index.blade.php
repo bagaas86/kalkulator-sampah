@@ -39,6 +39,7 @@
                         <th>Nama Sampah</th>
                         <th>Foto Sampah</th>
                         <th>Harga (Kg)</th>
+                        <th>Status Sampah</th>
                         <th>Aksi</th>
 
                     </tr>
@@ -57,11 +58,24 @@
                             <td style="width:10%"><img src="{{ asset('foto/sampah/' . $data->foto_sampah) }}"
                                     class="img-rounded" style="width:50%" alt=""></td>
                             <td>{{ $data->harga_sampah }}</td>
-
                             <td>
-                                {{-- <a href="{{route('dm.barang.detail', $data->id_item)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a> --}}
-                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                @if ($data->status_sampah == 'Aktif')
+                                    <span class="badge bg-success">Aktif</span>
+                                @elseif($data->status_sampah == 'Tidak Aktif')
+                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                @endif
+                            </td>
+                            <td>
+
+                                @if ($data->status_sampah == 'Aktif')
+                                    <a href="#" class="btn btn-danger btn-sm"
+                                        onclick="modalNonaktif({{ $data->id_sampah }})"><i class="bi bi-x"></i>
+                                        Nonaktifkan</a>
+                                @elseif($data->status_sampah == 'Tidak Aktif')
+                                    <a href="#" class="btn btn-success btn-sm"
+                                        onclick="modalAktif({{ $data->id_sampah }})"><i class="bi bi-check"></i>
+                                        Aktifkan</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -126,5 +140,43 @@
 
 
         });
+
+        function modalNonaktif(id_sampah) {
+
+            $("#exampleModalCenterTitle").html(`Nonaktifkan sampah`)
+            $("#page").html(`Apakah Anda Yakin Untuk Menonaktifkan Sampah?`);
+            $("#modalFooter").html(`
+            <a style="color:white" class="btn  btn-secondary" data-dismiss="modal">Tutup</a>
+            <a href="#" class="btn btn-danger" onclick="ubahStatus_Sampah(` + id_sampah + `)" id="status` + id_sampah +
+                `" data-custom-value="Tidak Aktif"><i class="bi bi-x"></i> Nonaktifkan</a>`)
+            $("#exampleModalCenter").modal('show');
+        }
+
+        function modalAktif(id_sampah) {
+
+            $("#exampleModalCenterTitle").html(`Aktifkan sampah`)
+            $("#page").html(`Apakah Anda Yakin Untuk Aktifkan sampah?`);
+            $("#modalFooter").html(` 
+            <a style="color:white" class="btn  btn-secondary" data-dismiss="modal">Tutup</a>
+            <a href="#"  class="btn btn-success" onclick="ubahStatus_Sampah(` + id_sampah + `)" id="status` +
+                id_sampah +
+                `" data-custom-value="Aktif"><i class="bi bi-check"></i> Aktifkan</a>`)
+            $("#exampleModalCenter").modal('show');
+        }
+
+
+        function ubahStatus_Sampah(id_sampah) {
+            var status = $("#status" + id_sampah).data("custom-value");
+            $.ajax({
+                type: "get",
+                url: "{{ url('ubahstatussampah') }}/" + id_sampah,
+                data: {
+                    'status': status,
+                },
+                success: function(data) {
+                    location.reload();
+                }
+            });
+        }
     </script>
 @endsection

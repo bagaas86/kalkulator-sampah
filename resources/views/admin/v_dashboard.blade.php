@@ -26,16 +26,16 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h4 class="text-c-blue">10</h4>
-                                    <h6 class="text-muted m-b-0">Total Sampah</h6>
+                                    <h4 class="text-c-blue">{{ $jumlah_sampah }}</h4>
+                                    <h6 class="text-muted m-b-0">Total Jenis Sampah</h6>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <i class="bi bi-speaker f-28"></i>
+                                    <i class="bi bi-trash f-28"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer bg-c-blue btn">
-                            <a href="#">
+                            <a href="{{ route('sampah.index') }}">
                                 <div class="row align-items-center">
                                     <div class="col-12">
                                         <h6 class="text-white m-b-0">Lihat</h6>
